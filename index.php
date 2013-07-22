@@ -33,7 +33,11 @@ if ($_SERVER['REQUEST_METHOD']==='POST') {
 }
 
 // Retrieves the access token from the query string
-$token = isset($_GET['access_token']) ? $_GET['access_token'] : NULL;
+if (isset($_GET['access_token'])) {
+    $token = htmlentities($_GET['access_token']);
+} else {
+    $token = NULL;
+}
 
 // Generates the login URL to authorize the app
 $login_url = 'https://api.instagram.com/oauth/authorize/'
@@ -51,7 +55,7 @@ $login_url = 'https://api.instagram.com/oauth/authorize/'
 
 <link rel="stylesheet" href="css/master.css" />
 
-<title>Realtime Workshop by Jason Lengstorf &mdash; Future Insights Live</title>
+<title>Realtime Instagram Photo Demo by Jason Lengstorf</title>
 
 </head>
 
@@ -79,7 +83,7 @@ $login_url = 'https://api.instagram.com/oauth/authorize/'
         <div id="count-bar" class="message hidden">
             <p>
                 <strong id="count">0 new photos posted.</strong>
-                <a href="<?=$page_url?>"
+                <a href="/"
                    class="button"
                    id="image-loader">&#8635; Load the new images </a>
             </p>
@@ -96,15 +100,18 @@ $login_url = 'https://api.instagram.com/oauth/authorize/'
 <footer>
     <p>
         This demo was created by 
-        <a href="http://www.lengstorf.com/">Jason Lengstorf</a> for use in the 
-        realtime workshop at Future Insights Live 2013. All photos belong to 
-        their respective owners.
+        <a href="http://www.lengstorf.com/">Jason Lengstorf</a>. 
+        The source code is available on 
+        <a href="https://github.com/jlengstorf/realtime-instagram">GitHub</a>.
+        All photos belong to their respective owners.
     </p>
 </footer>
 
 <script src="http://code.jquery.com/jquery-2.0.0.min.js"></script>
 <script src="http://js.pusher.com/2.0/pusher.min.js"></script>
 <script>
+    // For PHP-powered tag selection
+    var tag = '<?=$tag?>';
 
     // Enables pusher logging - don't include this in production
     Pusher.log = function(message) {
@@ -116,8 +123,7 @@ $login_url = 'https://api.instagram.com/oauth/authorize/'
 
     // Initializes Pusher (done inline to use PHP for config variables)
     var pusher   = new Pusher('<?=$pusher_key?>'),
-        channel  = pusher.subscribe('photos'),
-        tag      = '<?=$tag?>'; // For PHP-powered tag selection
+        channel  = pusher.subscribe('photos');
 
 </script>
 <script src="js/main.js"></script>
