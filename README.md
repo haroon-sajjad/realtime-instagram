@@ -1,15 +1,14 @@
-Realtime Demo App for Future Insights Live 2013
-===============================================
+Realtime Instagram Photo Tag Loader
+===================================
 
-This is the demo application that will be built during [Jason Lengtorf][1]'s workshop at
-[Future Insights Live][2]. It reads photos with the tag #selfie and displays them instantly 
-using [Instagram's API][3] and [Pusher][4].
+This is a demo application that reads photos with the tag `#catstagram` 
+and displays them instantly using [Instagram's API][1] and [Pusher][2].
 
 
 Demo
 ----
 
-A live demo of this code is available at http://filive-rtws.aws.af.cm/
+A live demo of this code is available at http://rtig.aws.af.cm/
 
 
 Walkthrough
@@ -17,7 +16,7 @@ Walkthrough
 
 To build this app, you'll need to run through the following steps:
 
-1.  Set up a live dev environment ([AppFog][5] is a quick and free option if 
+1.  Set up a live dev environment ([AppFog][3] is a quick and free option if 
     you don't have access to your own server)
 1.  Register a new app with Instagram
 1.  Register a new app with Pusher
@@ -71,9 +70,6 @@ License for the specific language governing permissions and limitations under
 the License.
 
 
-[1]: http://github.com/jlengstorf
-[2]: http://futureinsightslive.com/las-vegas-2013/
-[3]: http://instagram.com/developer/
-[4]: http://pusher.com/
-[5]: https://www.appfog.com/
-
+[1]: http://instagram.com/developer/
+[2]: http://pusher.com/
+[3]: https://www.appfog.com/
